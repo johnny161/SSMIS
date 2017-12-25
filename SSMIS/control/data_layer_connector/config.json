@@ -1,0 +1,17 @@
+{
+
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "14349024",
+    "database": "ssmis_test1",
+
+    "warehouse": 1,
+
+    "-w": "1",
+    "-c": "1",
+    "-r": "1",
+    "-l": "1",
+    "-i": "1",
+    "-f": "report"
+}

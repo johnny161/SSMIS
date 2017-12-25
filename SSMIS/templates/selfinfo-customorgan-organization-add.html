@@ -1,0 +1,19 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}增加定制社团组织架构属性{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>增加定制社团组织架构属性</h4> 
+            <div>
+                <p>部门编号：<input type="text" name="departnum" value="{{ profile.departnum }}"></p>
+                <p>部门名称：<input type="text" name="departname" value="{{ profile.departname }}"></p>
+                <p>部门描述：<input type="text" name="departdes" value="{{ profile.departdes }}"></p>
+                <p>上级部门：<input type="text" name="superdepart" value="{{ profile.superdepart }}"></p>
+                
+                <button type="submit" value="confirm">确认</button>
+                <button type="submit" value="cancel">取消</button>
+            </div>
+    </div> 
+
+{% endblock %}

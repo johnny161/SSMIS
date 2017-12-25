@@ -1,0 +1,13 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <!-- 创建社团 -->
+    <h4>创建新社团</h4>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{csf.as_p}}
+        <input type="submit" value="创建"/>
+    </form>
+{% endblock %}

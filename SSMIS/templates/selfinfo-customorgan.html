@@ -1,0 +1,17 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}定制社团{% endblock %}
+
+{% block content %}
+    <h1>
+        <a href="{%url 'edit_data_object' 0%}">添加新的数据对象</a>
+    </h1>
+        <h4>已有数据对象：</h4>
+        <br/>
+        {% for object in objects %}
+            <a href="{% url 'data_object' object.0 %}">{{object.1}}</a>
+            <br/>
+        {% endfor %}
+
+
+{% endblock %}

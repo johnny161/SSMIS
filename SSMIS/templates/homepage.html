@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSMIS</title>
+    <style>
+    	body{
+    		margin:0 auto;
+    		text-align:center;
+            background-color:#FFF0F5;
+    	}
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="header">
+    <h2>SSMIS</h2>
+    <p>
+        当前用户: {{user.username}}  <a href="/logout/"><input type="button" value="登出" class="btn btn-success"></a>   角色:  {{role}}
+
+    </p>
+    </div> 
+	
+    <div id="menu">
+        <a href="/homepage/"><input name="homepage" type="button" value="首页" class="btn btn-success"></a>
+        <input name="organization" type="button" value="社团">
+        <input name="activity" type="button" value="活动">
+        <a href="/selfinfohome/"><input name="selfinfohome" type="button" value="个人中心" class="btn btn-success"></a>
+    </div> 
+
+    <div id="main"> 
+        <h3>社团活动</h3> 
+        <p>...</p> 
+        <p>...</p> 
+    </div> 
+
+    <div id="aside"> 
+        <h3>社团文章</h3> 
+        <p>...</p> 
+        <p>...</p> 
+    </div> 
+
+    <div id="aside"> 
+        <h3>社团介绍</h3> 
+        <p>...</p> 
+        <p>...</p> 
+    </div> 
+
+
+    <!-- 背景动画 -->
+	<canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>
+	<script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>
+</body>
+</html>

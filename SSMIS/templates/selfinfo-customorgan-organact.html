@@ -1,0 +1,37 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}定制社团活动{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>社团活动</h4> 
+            <div>
+                <table border="1">
+                    <tr>
+                        <td>活动日期</td>
+                        <td>活动名称</td>
+                        <td>参与人员</td>
+                        <td>活动内容</td>
+                    </tr>
+                    <tr>
+                        <td>2017.11.05</td>
+                        <td>登山队校友回访访谈会</td>
+                        <td>嘉宾A，嘉宾B，嘉宾C，社团全体人员</td>
+                        <td>校友分享登山队活动心得</td>
+                    </tr>
+                    <tr>
+                        <td>2017.10.21</td>
+                        <td>著名登山电影观影活动</td>
+                        <td>社团全体人员</td>
+                        <td>通过观影活动，对登山活动进一步理解</td>
+                    </tr>
+                </table>  
+    
+                <button type="submit" value="add">增加</button>
+                <button type="submit" value="delete">删除</button>
+                <button type="submit" value="add">编辑</button>
+                <button type="submit" value="delete">查找</button>
+            </div>
+    </div> 
+
+{% endblock %}

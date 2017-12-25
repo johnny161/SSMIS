@@ -1,0 +1,15 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}增加定制社团属性-体现社团定制功能{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>增加定制社团属性</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{aff.as_p}}
+                <input type="submit" value="增加属性"/>
+            </form>
+    </div> 
+
+{% endblock %}

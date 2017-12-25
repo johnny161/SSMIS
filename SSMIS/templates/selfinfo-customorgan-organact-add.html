@@ -1,0 +1,19 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}增加定制社团活动属性{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>增加定制社团活动属性</h4> 
+            <div>
+                <p>活动日期：<input type="text" name="actdate" value="{{ profile.actdate }}"></p>
+                <p>活动名称：<input type="text" name="actname" value="{{ profile.actname }}"></p>
+                <p>参与人员：<input type="text" name="participants" value="{{ profile.participants }}"></p>
+                <p>活动内容：<input type="text" name="activities" value="{{ profile.activities }}"></p>
+                
+                <button type="submit" value="confirm">确认</button>
+                <button type="submit" value="cancel">取消</button>
+            </div>
+    </div> 
+
+{% endblock %}

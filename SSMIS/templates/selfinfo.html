@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSMIS</title>
+    <style>
+    	body{
+    		margin:0 auto;
+    		text-align:center;
+            background-color:#FFF0F5;
+    	}
+
+        /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFF0F5;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: #696969}
+
+        /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+   <!-- 首页 -->
+    <div id="header">
+    <h2>SSMIS</h2>
+    <p>
+        当前用户: {{user.username}}  <a href="/logout/"><input type="button" value="登出" class="btn btn-success"></a>   角色:  {{role}}
+    </p>
+    </div>
+
+    <div id="menu">
+        <a href="/homepage/"><input name="homepage" type="button" value="首页" class="btn btn-success"></a>
+        <input name="organization" type="button" value="社团">
+        <input name="activity" type="button" value="活动">
+        <input name="personal" type="button" value="个人中心">
+    </div> 
+
+    <div id="main"> 
+        <h3>SSMIS管理系统个人中心</h3>
+
+        <div class="dropdown">
+        <input class="dropbtn" name="personalInfo" type="button" value="个人信息">
+        <div class="dropdown-content">
+        <a href="/selfinfohome/">修改个人信息</a>
+        <a href="/changepwd/">修改密码</a> </div></div>
+
+        <div class="dropdown">
+        <input name="creOrganization" type="button" value="创建社团">
+        <div class="dropdown-content">
+        <a href="/createsociety/">创建新社团</a></div></div>
+
+
+        <!-- 增加社团定制按钮 -->
+        <div class="dropdown">
+        <input class="dropbtn" name="organcustom" type="button" value="社团定制">
+        <div class="dropdown-content">
+        <a href="/customizesociety/">定制社团</a>
+        <a href="/managesociety/">管理社团</a>
+        <a href="/customorganhome/">定制社团主页</a>
+        <a href="/customacthome/">定制活动主页</a>
+        </div></div>
+        <input name="apply" type="button" value="我的申请">
+    </div>
+    <br>
+    {% block title %}
+        <div></div>
+    {% endblock %}
+    {% block content %}
+        <div>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。</div>
+    {% endblock %}
+
+    <!-- 背景动画 -->
+	<canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>
+	<script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>
+</body>
+</html>

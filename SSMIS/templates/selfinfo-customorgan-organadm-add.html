@@ -1,0 +1,19 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}增加定制社团管理员属性{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>增加定制社团管理员属性</h4> 
+            <div>
+                <p>学号：<input type="text" name="IDnum" value="{{ profile.IDnum }}"></p>
+                <p>姓名：<input type="text" name="username" value="{{ profile.username }}"></p>
+                <p>职务：<input type="text" name="position" value="{{ profile.position }}"></p>
+                <p>职责：<input type="text" name="duty" value="{{ profile.duty }}"></p>
+                
+                <button type="submit" value="confirm">确认</button>
+                <button type="submit" value="cancel">取消</button>
+            </div>
+    </div> 
+
+{% endblock %}

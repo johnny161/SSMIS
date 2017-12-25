@@ -1,0 +1,27 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}<title>data object</title>{% endblock %}
+
+{% block content %}
+
+    <h2>数据对象 {{ objectname }} 的字段设置</h2>
+    <br/>
+    <h3>已有字段：</h3>
+
+    <table align="center" border="1">
+            <tr>
+                <th>fieldId</th><th>dataType</th><th>fieldName</th><th>fieldNum</th>
+            </tr>
+    {% for list in lists %}
+            <tr>
+                <th>{{ list.0 }}</th><th>{{ list.1 }}</th><th>{{ list.2 }}</th><th>{{ list.3 }}</th>
+            </tr>
+    {% endfor %}
+    </table>
+
+    <br/>
+    <br/>
+    <a href="{% url 'add_field' object %}">添加新的字段</a>
+
+
+{% endblock %}

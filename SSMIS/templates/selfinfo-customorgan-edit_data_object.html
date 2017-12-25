@@ -1,0 +1,19 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}<title>Edit data object</title>{% endblock %}
+
+{% block content %}
+    <h1>
+        <a href="#">修改数据对象</a>
+    </h1>
+<form action="{% url 'edit_action' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="object_id" value="{{object.id | default:'0'}}">
+    <label>数据对象名称
+        <input type="text" name="tableName" value="{{object.tableName}}">
+    </label>
+    <br/>
+    <input type="submit" value="提交">
+</form>
+
+{% endblock %}

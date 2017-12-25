@@ -1,0 +1,16 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <div id="aside">
+        <h4>个人基本信息</h4>
+            <p>姓名:{{ profile.realname }}</p>
+            <p>学号:{{ user.username }}</p>
+            <p>邮箱:{{ user.email }}</p>
+        <h4>租户中个人信息</h4>
+        <button type="save" value="save">保存修改</button>
+        <button type="submit" value="return">返回</button>
+    </div>
+
+{% endblock %}

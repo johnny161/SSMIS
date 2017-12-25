@@ -1,0 +1,49 @@
+{% extends 'selfinfo-manageorgan.html' %}
+
+{% block title %}管理社团成员{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>社团成员</h4> 
+            <div>
+                <table border="1">
+                    <tr>
+                        <td>属性标识</td>
+                        <td>属性名称</td>
+                        <td>最大长度</td>
+                        <td>属性类型</td>
+                        <td>允许为空</td>
+                        <td>是否唯一</td>
+                        <td>关联对象</td>
+                        <td>关联属性</td>
+                    </tr>
+                    <tr>
+                        <td>_ID</td>
+                        <td>成员标识</td>
+                        <td>字符串</td>
+                        <td>16</td>
+                        <td>不允许</td>
+                        <td>唯一</td>
+                        <td>成员学号</td>
+                        <td>成员学号</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </table>  
+    
+                <button type="submit" value="add">增加</button>
+                <button type="submit" value="delete">删除</button>
+                <button type="submit" value="add">编辑</button>
+                <button type="submit" value="delete">查找</button>
+            </div>
+    </div> 
+
+{% endblock %}

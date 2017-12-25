@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSMIS</title>
+    <style>
+    	body{
+    		margin:0 auto;
+    		text-align:center;
+    		background-color:#FFF0F5;
+    	}
+    </style>
+</head>
+<body>
+    <div>
+	<h1>SSMIS</h1>
+	<h2 class="subtitle">与中大分享你的社团、活动和见解</h2>
+	</div>
+    
+    <div>
+	<a href="/register" class="active">注册</a>
+	<a href="/">登录</a>
+	</div>
+
+	<!-- 注册 -->
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{rf.as_p}}
+        <input type="submit" value="注册"/>
+    </form>
+
+    <!-- 背景动画 -->
+	<canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>
+	<script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>
+</body>
+</html>

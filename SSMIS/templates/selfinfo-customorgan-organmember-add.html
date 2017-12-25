@@ -1,0 +1,23 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}增加定制社团成员属性{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>增加定制社团成员属性</h4> 
+            <div>
+                <p>属性标识：<input type="text" name="attrID" value="{{ profile.attrID }}"></p>
+                <p>属性名称：<input type="text" name="attrname" value="{{ profile.attrname }}"></p>
+                <p>最大长度：<input type="text" name="maxlen" value="{{ profile.maxlen }}"></p>
+                <p>属性类型：<select name="attrtype" value="{{ profile.attrtype }}" ><option>字符串</option> <option>字符</option> <option>整型</option> <option>布尔型</option> <option>浮点型</option> </select></p>
+                <p>允许为空：<select name="allowempty" value="{{ profile.allowempty }}" ><option>允许</option> <option>不允许</option> </select></p>
+                <p>是否唯一：<select name="isonly" value="{{ profile.isonly }}" ><option>唯一</option> <option>不唯一</option> </select></p>
+                <p>关联对象：<input type="text" name="assoobj" value="{{ profile.assoobj }}"></p>
+                <p>关联属性：<input type="text" name="assoattr" value="{{ assoattr }}"></p>
+                
+                <button type="submit" value="confirm">确认</button>
+                <button type="submit" value="cancel">取消</button>
+            </div>
+    </div> 
+
+{% endblock %}

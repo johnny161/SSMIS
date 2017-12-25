@@ -1,0 +1,37 @@
+{% extends 'selfinfo-customorgan.html' %}
+
+{% block title %}定制社团管理员{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>社团管理员</h4> 
+            <div>
+                <table border="1">
+                    <tr>
+                        <td>学号</td>
+                        <td>姓名</td>
+                        <td>职务</td>
+                        <td>职责</td>
+                    </tr>
+                    <tr>
+                        <td>14235678</td>
+                        <td>张大四</td>
+                        <td>东校区登山队总队长</td>
+                        <td>管理登山队</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </table>  
+    
+                <button type="submit" value="add">增加</button>
+                <button type="submit" value="delete">删除</button>
+                <button type="submit" value="add">编辑</button>
+                <button type="submit" value="delete">查找</button>
+            </div>
+    </div> 
+
+{% endblock %}

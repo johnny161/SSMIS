@@ -1,0 +1,29 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}<title>data object</title>{% endblock %}
+
+{% block content %}
+
+    <h2>数据对象 {{ objectname }} 的数据管理</h2>
+    <br/>
+    <h3>已有数据：</h3>
+
+    <table align="center" border="1">
+    {% for list in lists %}
+            <th>{{ list }}</th>
+    {% endfor %}
+    {% for datalist in datalists %}
+        <tr>
+            {% for item in datalist %}
+                <th>{{ item }}</th>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br/>
+    <br/>
+    <a href="{% url 'add_data' object %}">添加新的数据</a>
+
+
+{% endblock %}

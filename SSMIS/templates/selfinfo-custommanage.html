@@ -1,0 +1,14 @@
+{% extends 'selfinfo.html' %}
+
+{% block title %}管理社团{% endblock %}
+
+{% block content %}
+        <h4>已有数据对象：</h4>
+        <br/>
+        {% for object in objects %}
+            <a href="{% url 'manage_data' object.0 %}">{{object.1}}</a>
+            <br/>
+        {% endfor %}
+
+
+{% endblock %}

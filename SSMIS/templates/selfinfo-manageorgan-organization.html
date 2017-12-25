@@ -1,0 +1,49 @@
+{% extends 'selfinfo-manageorgan.html' %}
+
+{% block title %}管理社团组织架构{% endblock %}
+
+{% block content %}
+    <div id="aside"> 
+        <h4>社团组织架构</h4> 
+            <div>
+                <table border="1">
+                    <tr>
+                        <td>部门编号</td>
+                        <td>部门名称</td>
+                        <td>部门描述</td>
+                        <td>上级部门</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>山队总队长</td>
+                        <td>统领山队的发展</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>东校队长</td>
+                        <td>决定东校山队的发展方向</td>
+                        <td>山队总队长</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>东校副队长</td>
+                        <td>辅助队长、协调各部门管理山队工作</td>
+                        <td>东校队长</td>
+                    </tr>
+                                        <tr>
+                        <td>4</td>
+                        <td>宣传部</td>
+                        <td>推送（出线、训练日常、招新）、公众号</td>
+                        <td>队长，副队长</td>
+                    </tr>
+                </table>  
+    
+                <button type="submit" value="add">增加</button>
+                <button type="submit" value="delete">删除</button>
+                <button type="submit" value="add">编辑</button>
+                <button type="submit" value="delete">查找</button>
+            </div>
+    </div> 
+
+{% endblock %}
