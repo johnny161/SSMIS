@@ -16,7 +16,6 @@ from control.data_layer_connector.base_method import *
 from control.data_layer_connector.bussiness1 import *
 from control.data_layer_connector.saas_method import *
 from control.data_layer_connector.bussiness1 import *
-import MySQLdb
 
 def signup(request):
    # if request.user.is_authenticated:
@@ -109,8 +108,8 @@ def changepwd(request):
                 newpassword = request.POST.get('newpassword1', '')
                 user.set_password(newpassword)
                 user.save()
-                lf = LoginForm()
-                return render(request, 'signup.html', {'lf': lf,})
+                respon = HttpResponseRedirect('/')
+                return respon
             else:
                 return render(request, 'changepwd.html', {'user': user,'form': form, 'oldpassword_is_wrong': True})
         else:
@@ -140,11 +139,25 @@ def customize_society(request):
     return render(request, 'selfinfo-customorgan.html' ,{'objects':objects})
 
 def data_object(request, object):
-    user_id = request.user.id
-    tenant_id = Tenant.objects.get(user_id=user_id).tenantid
-    lists = get_field_list(object, tenant_id)
-    objectname=get_table_name(object, tenant_id)
-    return render(request, 'selfinfo-customorgan-data_object.html', {'object': object, 'lists': lists,'objectname':objectname})
+    if request.method == 'POST':
+        _name = request.POST.get('column_name')
+        _type = request.POST.get('column_type')
+        user_id = request.user.id
+        tenant_id = Tenant.objects.get(user_id=user_id).tenantid
+        add_field_new(tenant_id, int(object), _name, _type)
+        lists = get_field_list(object, tenant_id)
+        objectname = get_table_name(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        return render(request, 'selfinfo-customorgan-data_object.html',
+                      {'object': object, 'lists': lists, 'objectname': objectname, 'tablelists': table_lists})
+    else:
+        user_id = request.user.id
+        tenant_id = Tenant.objects.get(user_id=user_id).tenantid
+        lists = get_field_list(object, tenant_id)
+        objectname = get_table_name(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        return render(request, 'selfinfo-customorgan-data_object.html',
+                      {'object': object, 'lists': lists, 'objectname': objectname, 'tablelists': table_lists})
 
 def edit_data_object(request,object_id):
     if str(object_id) == '0':
@@ -170,20 +183,26 @@ def edit_action(request):
     return redirect('customizesociety')
     #return render(request, 'selfinfo-customorgan.html')
 
-def add_field(request,object):
+def add_field_n(request,object):
     if request.method == 'POST':
-        aff = AddFieldForm(request.POST)
-        if aff.is_valid():
-            _name = aff.cleaned_data['column_name']
-            _type = aff.cleaned_data['column_type']
-            user_id = request.user.id
-            tenant_id = Tenant.objects.get(user_id=user_id).tenantid
-            add_field_new(tenant_id, int(object), _name, _type)
-            lists = get_field_list(object, tenant_id)
-            return render(request, 'selfinfo-customorgan-data_object.html', {'object': object,'lists':lists})
+        _name = request.POST.get('column_name')
+        _type = request.POST.get('column_type')
+        user_id = request.user.id
+        tenant_id = Tenant.objects.get(user_id=user_id).tenantid
+        add_field_new(tenant_id, int(object), _name, _type)
+        lists = get_field_list(object, tenant_id)
+        objectname = get_table_name(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        return render(request, 'selfinfo-customorgan-data_object.html',
+                  {'object': object, 'lists': lists, 'objectname': objectname, 'tablelists': table_lists})
     else:
-        aff = AddFieldForm()
-    return render(request, 'selfinfo-customorgan-add.html', {'aff': aff})
+        user_id = request.user.id
+        tenant_id = Tenant.objects.get(user_id=user_id).tenantid
+        lists = get_field_list(object, tenant_id)
+        objectname = get_table_name(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        return render(request, 'selfinfo-customorgan-add.html',
+                  {'object': object, 'lists': lists, 'objectname': objectname, 'tablelists': table_lists})
 
 def manage_society(request):
     user_id=request.user.id
@@ -191,37 +210,35 @@ def manage_society(request):
     objects = get_table_list_new(tenant_id)
     return render(request, 'selfinfo-custommanage.html' ,{'objects':objects})
 
-def manage_data(request, object):
-    user_id = request.user.id
-    tenant_id = Tenant.objects.get(user_id=user_id).tenantid
-    lists = get_field_name_list(object, tenant_id)
-    data_lists=get_data_list(object,tenant_id)
-    objectname = get_table_name(object, tenant_id)
-    return render(request, 'selfinfo-custommanage-data_object.html', {'object': object, 'lists': lists,'datalists':data_lists,'objectname':objectname})
-
-def add_data(request,object):
+def manage_data_n(request,object):
     if request.method == 'POST':
-        adf = AddDataForm(request.POST)
-        if adf.is_valid():
-            v0 = adf.cleaned_data['v0']
-            v1 = adf.cleaned_data['v1']
-            v2 = adf.cleaned_data['v2']
-            v3 = adf.cleaned_data['v3']
-            v4 = adf.cleaned_data['v4']
-            v5 = adf.cleaned_data['v5']
-            v6 = adf.cleaned_data['v6']
-            v7 = adf.cleaned_data['v7']
-            v8 = adf.cleaned_data['v8']
-            v9 = adf.cleaned_data['v9']
-            user_id = request.user.id
-            tenant_id = Tenant.objects.get(user_id=user_id).tenantid
-            insert_data_new(object, tenant_id, v0, v1, v2, v3, v4, v5, v6, v7, v8, v9)
-            lists = get_field_name_list(object, tenant_id)
-            data_lists = get_data_list(object, tenant_id)
-            return render(request, 'selfinfo-custommanage-data_object.html', {'object': object, 'lists': lists,'datalists':data_lists})
+        user_id = request.user.id
+        tenant_id = Tenant.objects.get(user_id=user_id).tenantid
+        lists = get_field_name_list(object, tenant_id)
+        len=0
+        answer=[]
+        for i in lists:
+            temp=request.POST.get(i)
+            answer.append(temp)
+            len+=1
+        insert_data_n(tenant_id, object, len, answer)
+        objectname = get_table_name(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        data_lists = get_data_list(object, tenant_id)
+        return render(request, 'selfinfo-custommanage-data_object.html',
+                      {'object': object, 'lists': lists, 'datalists': data_lists, 'objectname': objectname,
+                       'tablelists': table_lists,'len':len})
     else:
         user_id = request.user.id
         tenant_id = Tenant.objects.get(user_id=user_id).tenantid
-        lists = get_field_list(object, tenant_id)
-        adf = AddDataForm()
-    return render(request, 'selfinfo-custommanage-add.html', {'adf': adf,'object': object, 'lists': lists})
+        lists = get_field_name_list(object, tenant_id)
+        new = lists
+        data_lists = get_data_list(object, tenant_id)
+        table_lists = get_table_list_new(tenant_id)
+        objectname = get_table_name(object, tenant_id)
+        len=0
+        for i in lists:
+            len+=1
+        return render(request, 'selfinfo-custommanage-data_object.html',
+                      {'object': object, 'lists': lists, 'datalists': data_lists, 'objectname': objectname,
+                       'tablelists': table_lists, 'new': new,'len':len})

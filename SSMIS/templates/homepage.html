@@ -1,54 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>SSMIS</title>
-    <style>
-    	body{
-    		margin:0 auto;
-    		text-align:center;
-            background-color:#FFF0F5;
-    	}
-    </style>
+    <meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html" >
+	<title>{% block title %}SSMIS{% endblock %}</title>
+    {% load staticfiles %}
+    <!-- css -->
+	<link  href="/static/css/style.css"  rel="stylesheet" >
+    <!-- js -->
 </head>
 <body>
-    <!-- 首页 -->
-    <div id="header">
-    <h2>SSMIS</h2>
-    <p>
-        当前用户: {{user.username}}  <a href="/logout/"><input type="button" value="登出" class="btn btn-success"></a>   角色:  {{role}}
+<!-- Header -->
+<div id="header">
+	<div class="shell">
+		<!-- Logo + Top Nav -->
+		<div id="top">
+			<h1><a href="#">SSMIS 学生社团管理信息系统</a></h1>
+		</div>
+		<!-- End Logo + Top Nav -->
 
-    </p>
-    </div> 
-	
-    <div id="menu">
-        <a href="/homepage/"><input name="homepage" type="button" value="首页" class="btn btn-success"></a>
-        <input name="organization" type="button" value="社团">
-        <input name="activity" type="button" value="活动">
-        <a href="/selfinfohome/"><input name="selfinfohome" type="button" value="个人中心" class="btn btn-success"></a>
-    </div> 
+		<!-- Main Nav -->
+		<div id="navigation">
+			<div id="top-navigation">
+				Welcome <a href="#"><strong>{{user.username}}</strong></a>
+				<span>|</span>
+				<a href="#">社团责任人</a>
+				<span>|</span>
+				<a href="/logout/" >Log out</a>
+			</div>
+		</div>
+		<!-- End Main Nav -->
 
-    <div id="main"> 
-        <h3>社团活动</h3> 
-        <p>...</p> 
-        <p>...</p> 
-    </div> 
+	</div>
+</div>
 
-    <div id="aside"> 
-        <h3>社团文章</h3> 
-        <p>...</p> 
-        <p>...</p> 
-    </div> 
-
-    <div id="aside"> 
-        <h3>社团介绍</h3> 
-        <p>...</p> 
-        <p>...</p> 
-    </div> 
+<!-- Container -->
+<div id="container">
+    <div id="nav">
+        <ul>
+            <li><a href="/homepage"> 首 页 </a></li>
+            <li><a href="#"> 社 团 </a></li>
+            <li><a href="#"> 活 动 </a></li>
+            <li><a href="/selfinfohome/"> 个 人 中 心 </a></li>
+        </ul>
+    </div>
 
 
-    <!-- 背景动画 -->
-	<canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>
-	<script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>
+	<div class="shell">
+
+		<!-- Small Nav -->
+		<div class="small-nav">
+			{% block small-nav %}
+
+            {% endblock %}
+		</div>
+		<!-- End Small Nav -->
+
+		<br />
+		<!-- Main -->
+		<div id="main">
+			<div class="cl">&nbsp;</div>
+
+			<!-- Content -->
+			<div id="content">
+
+				<!-- Box -->
+
+                {% block content %}
+                    <div id="main">
+        <h3>社团活动</h3>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+    <div id="aside">
+        <h3>社团文章</h3>
+        <p>...</p>
+        <p>...</p>
+    </div>
+
+    <div id="aside">
+        <h3>社团介绍</h3>
+        <p>...</p>
+        <p>...</p>
+    </div>
+                {% endblock %}
+
+				<!-- End Box -->
+
+			</div>
+			<!-- End Content -->
+
+			<!-- Sidebar -->
+            {% block sidebar %}
+
+            {% endblock %}
+			<!-- End Sidebar -->
+
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- Main -->
+	</div>
+</div>
+<!-- End Container -->
+
+
+<div id="footer">
+	<div class="shell">
+		<span class="left">&copy; 2017 - SSMIS</span>
+		<span class="right">
+			Design by <a href="http://chocotemplates.com" target="_blank" title="The Sweetest CSS Templates WorldWide">sdcs.sysu.edu.cn</a>
+		</span>
+	</div>
+</div>
 </body>
 </html>
+

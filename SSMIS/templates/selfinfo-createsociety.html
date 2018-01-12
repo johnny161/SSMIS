@@ -1,13 +1,46 @@
 {% extends 'selfinfo.html' %}
 
-{% block title %}{% endblock %}
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="/static/style/register-login.css">
+{% endblock %}
 
 {% block content %}
     <!-- 创建社团 -->
-    <h4>创建新社团</h4>
-    <form method="post" enctype="multipart/form-data">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="cent-box">
+	<div class="cent-box-header">
+		<h2 class="create-society">创建新社团</h2>
+	</div>
+
+	<div class="cont-main clearfix">
+
+        <form method="post" enctype="multipart/form-data"/>
         {% csrf_token %}
-        {{csf.as_p}}
-        <input type="submit" value="创建"/>
-    </form>
+        <div class="login form">
+			<div class="group">
+				<div class="group-ipt email">
+					{{ csf.tenantname.label }}:{{ csf.tenantname }}
+				</div>
+                <div class="group-ipt email">
+					{{ csf.tenantcategory.label }}:{{ csf.tenantcategory }}
+				</div>
+                <div class="group-ipt email">
+					{{ csf.tenantbelong.label }}:{{ csf.tenantbelong }}
+				</div>
+                <div class="group-ipt email">
+					{{ csf.tenantcampus.label }}:{{ csf.tenantcampus }}
+				</div>
+                <div class="group-ipt email">
+					{{ csf.tenantintroduction.label }}:{{ csf.tenantintroduction }}
+				</div>
+			</div>
+		</div>
+
+		<div class="button">
+			<button type="submit" class="login-btn register-btn" id="button">创建</button>
+		</div>
+        </form>
+	</div>
+    </div>
 {% endblock %}

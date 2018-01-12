@@ -1,15 +1,41 @@
-{% extends 'selfinfo-customorgan.html' %}
+{% extends 'selfinfo.html' %}
 
-{% block title %}增加定制社团属性-体现社团定制功能{% endblock %}
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="/static/style/register-login.css" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
 
 {% block content %}
-    <div id="aside"> 
-        <h4>增加定制社团属性</h4>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{aff.as_p}}
-                <input type="submit" value="增加属性"/>
-            </form>
-    </div> 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="cent-box">
+
+    <div class="cent-box-header">
+		<h2 class="create-society">增加定制社团属性</h2>
+	</div>
+
+	<div class="cont-main clearfix">
+
+        <form  method="post" enctype="multipart/form-data"/>
+        {% csrf_token %}
+        <div class="login form">
+			<div class="group">
+				<div class="group-ipt email">
+                    <input type="text" name="column_name" id="email" class="ipt" placeholder="字段名称" value="{{column_name}}" required>
+				</div>
+			</div>
+		</div>
+        <div class="login form">
+			<div class="group">
+				<div class="group-ipt email">
+                    <input type="text" name="column_type" id="email" class="ipt" placeholder="字段类型" value="{{column_type}}" required>
+				</div>
+			</div>
+		</div>
+        <br>
+		<center><input type="submit" value="提交"  style="text-align:center; width:60px;height:20px;" width="80%" height="100%"></center>
+        </form>
+	</div>
+</div>
+
 
 {% endblock %}

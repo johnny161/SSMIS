@@ -1,19 +1,36 @@
 {% extends 'selfinfo.html' %}
 
-{% block title %}<title>Edit data object</title>{% endblock %}
+{% block title %}
+    <link rel="stylesheet" type="text/css" href="/static/style/register-login.css" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
 
 {% block content %}
-    <h1>
-        <a href="#">修改数据对象</a>
-    </h1>
-<form action="{% url 'edit_action' %}" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="object_id" value="{{object.id | default:'0'}}">
-    <label>数据对象名称
-        <input type="text" name="tableName" value="{{object.tableName}}">
-    </label>
-    <br/>
-    <input type="submit" value="提交">
-</form>
+    <!-- 创建社团 -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+    <div class="cent-box">
+
+    <div class="cent-box-header">
+		<a href="#"><h2 class="create-society">添加数据对象</h2></a>
+	</div>
+
+	<div class="cont-main clearfix">
+
+        <form action="{% url 'edit_action' %}" method="post" enctype="multipart/form-data"/>
+        {% csrf_token %}
+        <input type="hidden" name="object_id" value="{{object.id | default:'0'}}">
+        <div class="login form">
+			<div class="group">
+				<div class="group-ipt email">
+                    <input type="text" name="tableName" id="email" class="ipt" placeholder="数据对象名称" value="{{object.tableName}}" required>
+				</div>
+			</div>
+		</div>
+        <br>
+		<center><input type="submit" value="提交"  style="text-align:center; width:60px;height:20px;" width="80%" height="100%"></center>
+        </form>
+	</div>
+</div>
 {% endblock %}
+
+

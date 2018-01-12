@@ -3,6 +3,142 @@
 {% block title %}<title>data object</title>{% endblock %}
 
 {% block content %}
+                <div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2 class="left">数据对象 {{ objectname }} 的字段定制</h2>
+						<div class="right">
+							<label>search data</label>
+							<input type="text" class="field small-field" />
+							<input type="submit" class="button" value="search" />
+						</div>
+					</div>
+					<!-- End Box Head -->
+
+					<!-- Table -->
+					<div class="table">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th width="13"><input type="checkbox" class="checkbox" /></th>
+                                <th>fieldId</th>
+                                <th>dataType</th>
+                                <th>fieldName</th>
+                                <th>fieldNum</th>
+                                <th width="110" class="ac">Content Control</th>
+							</tr>
+
+                            {% for list in lists %}
+                                <tr>
+                                <td><input type="checkbox" class="checkbox" /></td>
+                                    {% if list != "" %}
+                                        <td>{{ list.0 }}</td>
+                                        <td>{{ list.1 }}</td>
+                                        <td>{{ list.2 }}</td>
+                                        <td>{{ list.3 }}</td>
+                                    {% endif %}
+								<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+                                 </tr>
+                             {% endfor %}
+
+						</table>
+
+
+						<!-- Pagging -->
+						<div class="pagging">
+							<div class="left">Showing 1-12 of 44</div>
+							<div class="right">
+								<a href="#">Previous</a>
+								<a href="#">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<span>...</span>
+								<a href="#">Next</a>
+								<a href="#">View all</a>
+							</div>
+						</div>
+						<!-- End Pagging -->
+
+					</div>
+					<!-- Table -->
+
+				</div>
+
+
+    <div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>添加新的字段</h2>
+					</div>
+					<!-- End Box Head -->
+
+					<form action="" method="post">
+                    {% csrf_token %}
+						<!-- Form -->
+						<div class="form">
+								<p>
+									<span class="req">max 50 symbols</span>
+									<label>字段名称<span>(Required Field)</span></label>
+									<input type="text" name="column_name" class="field size1" placeholder="" value="" required/>
+								</p>
+                                <p>
+									<span class="req">max 50 symbols</span>
+									<label>字段类型<span>(Required Field)</span></label>
+									<input type="text" name="column_type" class="field size1" placeholder="" value="" required/>
+								</p>
+						</div>
+						<!-- End Form -->
+
+						<!-- Form Buttons -->
+						<div class="buttons">
+							<input type="button" class="button" value="preview" />
+							<input type="submit" class="button" value="submit" name="a"/>
+						</div>
+						<!-- End Form Buttons -->
+					</form>
+    </div>
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+<div id="sidebar">
+
+				<!-- Box -->
+				<div class="box">
+
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>数据对象定制</h2>
+					</div>
+					<!-- End Box Head-->
+
+					<div class="box-content">
+                        {% for table in tablelists %}
+                                <a href="{% url 'data_object' table.0 %}" class="add-button"><span>{{ table.1 }}</span></a>
+						<div class="cl">&nbsp;</div>
+                        {% endfor %}
+                        <br>
+                        <br>
+                        <a href="{%url 'edit_data_object' 0%}" class="add-button"><span>添加新的数据对象</span></a>
+                        <br>
+                        <br>
+
+						<!-- End Sort -->
+					</div>
+				</div>
+				<!-- End Box -->
+</div>
+{% endblock %}
+
+
+
+
+
+
+
 
     <h2>数据对象 {{ objectname }} 的字段设置</h2>
     <br/>
@@ -23,5 +159,3 @@
     <br/>
     <a href="{% url 'add_field' object %}">添加新的字段</a>
 
-
-{% endblock %}

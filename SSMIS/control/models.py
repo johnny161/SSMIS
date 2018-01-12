@@ -44,7 +44,7 @@ class Tenant(models.Model):
         7: '职业拓展类',
     }
     tenantid = models.AutoField( primary_key=True)  # Field name made lowercase.
-    tenantcategory = models.SmallIntegerField(default=1, choices=TYPE_CHOICES.items())
+    tenantcategory = models.SmallIntegerField(u'社团分类',default=1, choices=TYPE_CHOICES.items())
     tenantname = models.CharField(u'社团名称',max_length=45)  # Field name made lowercase.
     tenantbelong = models.CharField(u'所属单位',max_length=20,)
     tenantcampus = models.CharField(u'所属校区',max_length=20,)

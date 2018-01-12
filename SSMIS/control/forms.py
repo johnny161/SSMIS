@@ -4,8 +4,8 @@ from .models import *
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label=u'学号', required=True, max_length=30)
-    password = forms.CharField(label=u'密码', required=True, widget=forms.PasswordInput(), max_length=20)
+    username = forms.CharField(label=u'学号:', required=True, max_length=30)
+    password = forms.CharField(label=u'密码:', required=True, widget=forms.PasswordInput(), max_length=20)
 
 
 class RegistForm(forms.Form):

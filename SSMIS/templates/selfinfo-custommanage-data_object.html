@@ -3,27 +3,124 @@
 {% block title %}<title>data object</title>{% endblock %}
 
 {% block content %}
+                <div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2 class="left">{{ objectname }}</h2>
+						<div class="right">
+							<label>search data</label>
+							<input type="text" class="field small-field" />
+							<input type="submit" class="button" value="search" />
+						</div>
+					</div>
+					<!-- End Box Head -->
 
-    <h2>数据对象 {{ objectname }} 的数据管理</h2>
-    <br/>
-    <h3>已有数据：</h3>
+					<!-- Table -->
+					<div class="table">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th width="13"><input type="checkbox" class="checkbox" /></th>
+								{% for list in lists %}
+                                    {% if item != "" %}
+                                    <th>{{ list }}</th>
+                                    {% endif %}
+                                {% endfor %}
+                                <th width="110" class="ac">Content Control</th>
+							</tr>
 
-    <table align="center" border="1">
-    {% for list in lists %}
-            <th>{{ list }}</th>
-    {% endfor %}
-    {% for datalist in datalists %}
-        <tr>
-            {% for item in datalist %}
-                <th>{{ item }}</th>
-            {% endfor %}
-        </tr>
-    {% endfor %}
-    </table>
+                            {% for datalist in datalists %}
+                                <tr>
+                                <td><input type="checkbox" class="checkbox" /></td>
+                                {% for item in datalist%}
+                                    {% if forloop.counter0 < len %}
+                                            <td>{{ item}}</td>
+                                    {% endif %}
+                                {% endfor %}
+								<td><a href="#" class="ico del">Delete</a><a href="#" class="ico edit">Edit</a></td>
+                                 </tr>
+                             {% endfor %}
 
-    <br/>
-    <br/>
-    <a href="{% url 'add_data' object %}">添加新的数据</a>
+						</table>
 
 
+						<!-- Pagging -->
+						<div class="pagging">
+							<div class="left">Showing 1-12 of 44</div>
+							<div class="right">
+								<a href="#">Previous</a>
+								<a href="#">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<span>...</span>
+								<a href="#">Next</a>
+								<a href="#">View all</a>
+							</div>
+						</div>
+						<!-- End Pagging -->
+
+					</div>
+					<!-- Table -->
+
+				</div>
+
+
+    <div class="box">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>添加新的数据</h2>
+					</div>
+					<!-- End Box Head -->
+
+					<form action="" method="post">
+                    {% csrf_token %}
+						<!-- Form -->
+						<div class="form">
+                                {% for list in lists %}
+								<p>
+									<span class="req">max 50 symbols</span>
+									<label>{{ list }}<span>(Required Field)</span></label>
+									<input type="text" name="{{ list }}" class="field size1" placeholder="" value="" required/>
+								</p>
+                                {% endfor %}
+						</div>
+						<!-- End Form -->
+
+						<!-- Form Buttons -->
+						<div class="buttons">
+							<input type="button" class="button" value="preview" />
+							<input type="submit" class="button" value="submit" name="a"/>
+						</div>
+						<!-- End Form Buttons -->
+					</form>
+    </div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+<div id="sidebar">
+
+				<!-- Box -->
+				<div class="box">
+
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>数据对象管理</h2>
+					</div>
+					<!-- End Box Head-->
+
+					<div class="box-content">
+                        {% for table in tablelists %}
+                                <a href="{% url 'manage_data_n' table.0 %}" class="add-button"><span>{{ table.1 }}</span></a>
+						<div class="cl">&nbsp;</div>
+                        {% endfor %}
+
+						<br>
+						<!-- End Sort -->
+					</div>
+				</div>
+				<!-- End Box -->
+</div>
 {% endblock %}

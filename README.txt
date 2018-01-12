@@ -1,1 +1,1 @@
-python3.6.1 + django1.10.1 + MySql
+python3.6 + django1.10 + MySql

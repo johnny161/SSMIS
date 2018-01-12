@@ -1,4 +1,5 @@
 from control.data_layer_connector.private_method import *
+#from SSMIS.control.data_layer_connector.private_method import *
 
 table_sql = """
     INSERT INTO saas_table(tableId, tableName, tenantId)
@@ -29,6 +30,18 @@ def insert_data(tenantId, tableName, columns, values):
         sql += "\"" + str(i) + "\","
     sql = sql[:-1]
     sql += ")"    
+    db_template(sql)
+
+def insert_data_n(tenantId, tableID, number, values):
+    sql = "insert into saas_data (tableID, tenantId,"
+    for i in range(number):
+        sql += "value" + str(i) + ","
+    sql = sql[:-1]
+    sql += ") values (" + str(tableID) + "," + str(tenantId) + ","
+    for i in values:
+        sql += "\"" + str(i) + "\","
+    sql = sql[:-1]
+    sql += ")"
     db_template(sql)
 
 def delete_data(tenantId, tableName, columns, conditions, condition_num):

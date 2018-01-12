@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from control import views as control_views
 from django.contrib.auth.decorators import login_required
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -30,11 +32,10 @@ urlpatterns = [
     url(r'^createsociety/$',control_views.create_society,name="createsociety"),#创建社团
     url(r'^customizesociety/$', control_views.customize_society, name="customizesociety"),  # 定制社团数据对象
     url(r'^dataobject/(?P<object>[0-9]+)$', control_views.data_object, name='data_object'), #定制数据对象的字段
-    url(r'^dataobject/(?P<object>[0-9]+)/addfield/$', control_views.add_field, name='add_field'),  # 增加数据对象的字段
+    url(r'^dataobject/(?P<object>[0-9]+)/addfield/$', control_views.add_field_n, name='add_field_n'),  # 增加数据对象的字段
     url(r'^edit/(?P<object_id>[0-9]+)$', control_views.edit_data_object, name="edit_data_object"),  # 修改社团数据对象
     url(r'^edit/action/$', control_views.edit_action, name='edit_action'),
 
     url(r'^managesociety/$', control_views.manage_society, name="managesociety"),  # 管理社团数据对象
-    url(r'^managedataobject/(?P<object>[0-9]+)$', control_views.manage_data, name='manage_data'),  # 管理数据对象的数据
-    url(r'^dataobject/(?P<object>[0-9]+)/adddata/$', control_views.add_data, name='add_data'),  # 增加数据对象的数据
-]
+    url(r'^managedataobject/(?P<object>[0-9]+)$', control_views.manage_data_n, name='manage_data_n'),  # 管理数据对象的数据
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

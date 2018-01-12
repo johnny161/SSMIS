@@ -3,7 +3,6 @@ from control.data_layer_connector.private_method import *
 #from SSMIS.control.data_layer_connector.saas_method import *
 #from control.data_layer_connector.saas_method import *
 #from control.data_layer_connector.base_method import *
-import MySQLdb
 
 data_sql = """
     INSERT INTO saas_data (tableId,tenantId,value0,value1,value2,value3,value4,value5,value6,value7,value8,value9)
@@ -62,6 +61,7 @@ def insert_data(tableId, tenantId, v0=None, v1=None, v2=None, v3=None, v4=None, 
     sql = data_sql % tmp
     db_template(sql)
 
+#
 def insert_data_new(table_id,tenant_id,v0=None,v1=None,v2=None,v3=None,v4=None,v5=None,v6=None,v7=None,v8=None,v9=None):
     try:
         conn = MySQLdb.connect(host='localhost', user='root', passwd='14349024', db='ssmis_test1', charset='utf8')
@@ -90,3 +90,4 @@ def get_table_name(tableId,tenantId):
 #print (get_table_list_new(2)[1][0])
 #insert_data_new('18','2','11','22','33')
 #v0=None, v1=None, v2=None, v3=None, v4=None, v5=None, v6=None, v7=None, v8=None, v9=None
+#insert_data('5','2','11','22','11','22','11','22','11','22','11','22')

@@ -1,17 +1,17 @@
 from data_layer_connector.create_db.mysql_connector import Connector
 
-Table_sql = """
-    DROP TABLE IF EXISTS Saas_Table;
-    CREATE TABLE Saas_Table(
+table_sql = """
+    DROP TABLE IF EXISTS saas_table;
+    CREATE TABLE saas_table(
         tableId INTEGER PRIMARY KEY AUTO_INCREMENT,
         tableName VARCHAR(50),
         tenantId INTEGER
     );
 """
 
-Field_sql = """
-    DROP TABLE IF EXISTS Saas_Field;
-    CREATE TABLE Saas_Field(
+field_sql = """
+    DROP TABLE IF EXISTS saas_field;
+    CREATE TABLE saas_field(
         fieldId INTEGER PRIMARY KEY AUTO_INCREMENT,
         dataType VARCHAR(50),
         fieldName VARCHAR(50),
@@ -22,9 +22,9 @@ Field_sql = """
     );
 """
 
-Data_sql = """
-    DROP TABLE IF EXISTS Saas_Data;
-    CREATE TABLE Saas_Data(
+data_sql = """
+    DROP TABLE IF EXISTS saas_data;
+    CREATE TABLE saas_data(
         Id INTEGER  AUTO_INCREMENT,
         tableId INTEGER,
         tenantId INTEGER,

@@ -1,14 +1,36 @@
 {% extends 'selfinfo.html' %}
 
-{% block title %}管理社团{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
-        <h4>已有数据对象：</h4>
-        <br/>
-        {% for object in objects %}
-            <a href="{% url 'manage_data' object.0 %}">{{object.1}}</a>
-            <br/>
-        {% endfor %}
 
+{% endblock %}
 
+{% block sidebar %}
+<div id="sidebar">
+
+				<!-- Box -->
+				<div class="box">
+
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2>management</h2>
+					</div>
+					<!-- End Box Head-->
+
+					<div class="box-content">
+                    {% if objects == NULL %}
+
+                    {% else %}
+                        {% for object in objects %}
+                                <a href="{% url 'manage_data_n' object.0 %}" class="add-button"><span>{{ object.1 }}</span></a>
+						<div class="cl">&nbsp;</div>
+                        {% endfor %}
+                    {% endif %}
+						<br>
+						<!-- End Sort -->
+					</div>
+				</div>
+				<!-- End Box -->
+</div>
 {% endblock %}
